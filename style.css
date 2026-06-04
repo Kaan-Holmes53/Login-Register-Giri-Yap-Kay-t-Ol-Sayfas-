@@ -1,0 +1,207 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Montserrat,sans-serif;
+}
+
+body{
+    background:#1f1f1f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    min-height:100vh;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at 20% 20%, rgba(95,0,255,.25) 0%, transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(0,150,255,.20) 0%, transparent 35%),
+    radial-gradient(circle at 50% 70%, rgba(255,0,255,.15) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(0,255,255,.10) 0%, transparent 35%),
+    linear-gradient(
+        to bottom,
+        #02040a 0%,
+        #050816 25%,
+        #090f23 50%,
+        #030510 100%
+    );
+
+    position:relative;
+}
+body::before{
+    pointer-events: none;
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+    radial-gradient(2px 2px at 100px 80px,#fff,transparent),
+    radial-gradient(1px 1px at 180px 50px,#fff,transparent),
+    radial-gradient(2px 2px at 250px 120px,#fff,transparent),
+    radial-gradient(1px 1px at 320px 40px,#fff,transparent),
+    radial-gradient(2px 2px at 400px 90px,#fff,transparent),
+    radial-gradient(2px 2px at 520px 130px,#fff,transparent),
+    radial-gradient(1px 1px at 700px 60px,#fff,transparent),
+    radial-gradient(2px 2px at 850px 140px,#fff,transparent);
+
+    background-size:900px 200px;
+
+    animation:starsMove 120s linear infinite;
+
+    opacity:.8;
+}
+body::after{
+    pointer-events: none;
+    content:"";
+    position:absolute;
+
+    width:1200px;
+    height:1200px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.15) 0%,
+        rgba(130,180,255,.08) 15%,
+        rgba(0,100,255,.03) 35%,
+        transparent 70%
+    );
+
+    filter:blur(80px);
+
+    animation:galaxyRotate 80s linear infinite;
+}
+@keyframes starsMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(200px);
+    }
+}
+
+@keyframes galaxyRotate{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+body::before{
+    z-index: -2;
+}
+
+body::after{
+    z-index: -1;
+}
+.wrapper{
+    position: relative;
+    z-index: 100;
+    perspective:1000px;
+}
+.card{
+    position: relative;
+    z-index: 100;
+    width:420px;
+    height:500px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:0.8s;
+}
+
+.card.flip{
+    transform:rotateY(180deg);
+}
+
+.face{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#111;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 0 30px rgba(0,183,255,.2);
+    backface-visibility:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:15px;
+}
+
+.back{
+    transform:rotateY(180deg);
+}
+
+h2{
+    color:white;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:12px;
+    padding:0 15px;
+    background:rgba(255,255,255,.05);
+    color:white;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+}
+
+input:focus{
+    border:2px solid #00b7ff;
+    box-shadow:0 0 15px rgba(0,183,255,.4);
+}
+
+input::placeholder{
+    color:rgba(255,255,255,.45);
+}
+
+button{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#00b7ff,#0066ff);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(0,183,255,.5);
+}
+
+p{
+    text-align:center;
+    color:white;
+    margin-top:10px;
+}
+
+span{
+    color:#00b7ff;
+    cursor:pointer;
+    font-weight:700;
+}
+
+span:hover{
+    text-decoration:underline;
+}
